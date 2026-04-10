@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Villa Cas Nins · Mallorca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:   #000000;
+      --white:   #FFFFFF;
+      --gray:    #F5F5F5;
+      --mid:     #CCCCCC;
+      --text:    #111111;
+      --muted:   #767676;
+      --red:     #E4002B;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 52px;
+    }
+    .topbar-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .topbar-logo span { color: var(--red); }
+    .lang-switch {
+      display: flex;
+      gap: 0.2rem;
+    }
+    .lang-switch a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      transition: color 0.15s;
+    }
+    .lang-switch a.active, .lang-switch a:hover { color: var(--white); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 92vh;
+      min-height: 500px;
+      background: var(--black);
+      overflow: hidden;
+    }
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+      opacity: 0.45;
+    }
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 4rem 3rem;
+    }
+    .hero-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.8rem;
+    }
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(4.5rem, 12vw, 10rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--red);
+    }
+    .hero-sub {
+      font-family: 'Barlow', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.05em;
+      max-width: 440px;
+    }
+
+    /* ── STICKY NAV ── */
+    nav.toc {
+      background: var(--white);
+      border-bottom: 3px solid var(--black);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    nav.toc::-webkit-scrollbar { display: none; }
+    nav.toc a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 1rem 1.2rem;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -3px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    nav.toc a:hover { color: var(--black); border-bottom-color: var(--black); }
+
+    /* ── INTRO BANNER ── */
+    .intro-banner {
+      background: var(--black);
+      padding: 4rem 3rem;
+    }
+    .intro-banner p {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.15;
+      text-transform: uppercase;
+      color: var(--white);
+      max-width: 780px;
+      letter-spacing: 0.01em;
+    }
+    .intro-banner p span { color: var(--red); }
+
+    /* ── SECTIONS ── */
+    .sections {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem 6rem;
+    }
+
+    .section {
+      border-bottom: 2px solid var(--black);
+    }
+    .section:first-child { border-top: 2px solid var(--black); margin-top: 3rem; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      padding: 1.2rem 0;
+      cursor: pointer;
+      user-select: none;
+      gap: 1.5rem;
+    }
+    .section-header:hover .section-title { color: var(--red); }
+
+    .section-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 2.2rem;
+      color: var(--mid);
+      min-width: 3rem;
+      line-height: 1;
+      transition: color 0.15s;
+    }
+    .section-header:hover .section-num { color: var(--red); }
+
+    .section-title-wrap { flex: 1; }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      transition: color 0.15s;
+      line-height: 1;
+    }
+    .section-sub {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--muted);
+      margin-top: 0.15rem;
+      letter-spacing: 0.02em;
+    }
+    .section-toggle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: var(--black);
+      line-height: 1;
+      transition: transform 0.25s ease;
+      width: 2rem;
+      text-align: center;
+    }
+    .section-header.open .section-toggle { transform: rotate(45deg); }
+
+    .section-body {
+      display: none;
+      padding: 0 0 2rem 4.5rem;
+    }
+    .section-body.open { display: block; }
+
+    .section-body p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 1rem;
+      max-width: 640px;
+    }
+    .section-body ul {
+      list-style: none;
+      margin: 0.5rem 0 1rem;
+      max-width: 640px;
+    }
+    .section-body ul li {
+      font-size: 0.95rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #E8E8E8;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .section-body ul li::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+    .section-body ul li:last-child { border-bottom: none; }
+
+    .section-body h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin: 1.8rem 0 0.8rem;
+    }
+
+    /* ── NOTICE ── */
+    .notice {
+      margin: 1rem 0;
+      padding: 1rem 1.2rem;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      max-width: 640px;
+    }
+    .notice.info { background: var(--gray); border-left: 4px solid var(--black); }
+    .notice.warn { background: #FFF5F5; border-left: 4px solid var(--red); }
+    .notice.tip  { background: #F5FFF8; border-left: 4px solid #00A550; }
+
+    /* ── ALARM TABLE ── */
+    .alarm-mode {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid #E8E8E8;
+      max-width: 640px;
+    }
+    .alarm-mode:last-of-type { border-bottom: none; }
+    .alarm-mode strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+    .alarm-mode span { font-size: 0.9rem; color: var(--muted); }
+    .alarm-table { width: 100%; border-collapse: collapse; margin-top: 1rem; max-width: 640px; }
+    .alarm-table td {
+      padding: 0.9rem 0.5rem;
+      border-bottom: 1px solid #E8E8E8;
+      font-size: 0.9rem;
+      vertical-align: top;
+    }
+    .alarm-table tr:last-child td { border-bottom: none; }
+    .alarm-table td:first-child { width: 40%; }
+    .alarm-table td strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    /* ── WIFI ── */
+    .wifi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--black);
+      margin: 1rem 0;
+      max-width: 500px;
+    }
+    .wifi-cell {
+      background: var(--gray);
+      padding: 1.2rem 1.4rem;
+    }
+    .wifi-cell .label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    .wifi-cell .value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--black);
+      letter-spacing: 0.03em;
+    }
+    .qr-wrap { margin-top: 1.5rem; }
+    .qr-wrap img { width: 120px; display: block; }
+    .qr-wrap p {
+      font-size: 0.65rem !important;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted) !important;
+      margin-top: 0.5rem !important;
+    }
+
+    /* ── CONTACT ── */
+    .contact-block {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #E8E8E8;
+      max-width: 640px;
+    }
+    .contact-block:last-child { border-bottom: none; }
+    .contact-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .contact-role {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+    .contact-phone {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      color: var(--black);
+      text-decoration: none;
+      background: var(--black);
+      color: var(--white);
+      padding: 0.7rem 1.4rem;
+      text-transform: uppercase;
+      transition: background 0.15s;
+    }
+    .contact-phone:hover { background: var(--red); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      padding: 3rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-brand {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .footer-brand span { color: var(--red); }
+    footer a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    footer a:hover { color: var(--white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero-content { padding: 3rem 1.5rem; }
+      .intro-banner { padding: 3rem 1.5rem; }
+      .sections { padding: 0 1.2rem 4rem; }
+      .section-body { padding-left: 0; }
+      .wifi-grid { grid-template-columns: 1fr; }
+      nav.toc a { padding: 0.9rem 0.9rem; }
+      .contact-block { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      footer { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="topbar-logo">Villa <span>Cas Nins</span></div>
+  <div class="lang-switch">
+    <a href="/en/">EN</a>
+    <a href="/de/" class="active">DE</a>
+  </div>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <img src="../img/banner.jpg" alt="Villa Cas Nins">
+  <div class="hero-content">
+    <div class="hero-label">Mallorca · Ihr Zuhause</div>
+    <h1>Willkommen<br><em>Zuhause.</em></h1>
+    <p class="hero-sub">Alles, was Sie für einen perfekten Aufenthalt wissen müssen.</p>
+  </div>
+</div>
+
+<!-- Sticky Nav -->
+<nav class="toc">
+  <a href="#klima">Klima</a>
+  <a href="#alarm">Alarm</a>
+  <a href="#checkout">Checkout</a>
+  <a href="#regeln">Regeln</a>
+  <a href="#schluessel">Schlüssel</a>
+  <a href="#kueche">Küche</a>
+  <a href="#waesche">Wäsche</a>
+  <a href="#pool">Pool</a>
+  <a href="#tv">TV</a>
+  <a href="#abfall">Abfall</a>
+  <a href="#wifi">WiFi</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
+
+<!-- Intro Banner -->
+<div class="intro-banner">
+  <p>Genießen Sie jeden Moment.<br><span>Wir machen den Rest.</span></p>
+</div>
+
+<!-- Sections -->
+<div class="sections">
+
+  <div class="section" id="klima">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">01</span>
+      <div class="section-title-wrap">
+        <div class="section-title">Klimatisierung</div>
+        <div class="section-sub">Kühl und gemütlich</div>
+      </div>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Die Villa Cas Nins ist vollständig mit einer Klimaanlage ausgestattet, die sowohl kühlen als auch heizen kann. Die Fernbedienungen befinden sich in den jeweiligen Bereichen des Wohnzimmers, der Küche und der Schlafzimmer.</p>
+      <div class="notice tip">
+        Türen und Fenster bitte geschlossen halten, während das System in Betrieb ist.
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="alarm">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">02</span>
+      <div class="section-title-wrap">
+        <div class="section-title">Alarmanlage</div>
+        <div class="section-sub">Sicher und gut</div>
+      </div>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Das Haus ist durch eine moderne Alarmanlage gesichert. Die Gegend ist sicher — die Anlage steht Ihnen zur freien Nutzung zur Verfügung.</p>
+      <div class="notice warn">Falsche Alarme können zu Polizeieinsätzen führen.</div>
+      <img src="../img/alarm-panel.png" alt="Alarm-Bedienfeld" style="max-width:100%;margin:1.5rem 0;display:block;">
+      <h3>Die drei Modi</h3>
+      <div class="alarm-mode">
+        <strong>Ungesichert</strong>
+        <span>Zu Hause, freie Bewegung. Kein Alarm.</span>
+      </div>
+      <div class="alarm-mode">
+        <strong>Gesicherter Außenbereich</strong>
+        <span>Wenn alle das Haus verlassen. Alarm bei offenen Türen/Fenstern und Bewegung innen.</span>
+      </div>
+      <div class="alarm-mode">
+        <strong>Gesicherter Innenbereich</strong>
+        <span>Für die Nacht. Nur Türen/Fenster-Alarm — keine Bewegungssensoren.</span>
+      </div>
+      <h3>Bedienung</h3>
+      <table class="alarm-table">
+        <tr>
+          <td>
+            <img src="../img/alarm-key.png" alt="Schlüsselanhänger" style="height:26px;display:block;margin-bottom:0.4rem;">
+            <strong>Alarm ausschalten</strong>
+          </td>
+          <td>Schlüsselanhänger in die Mitte des Panels — Piepton abwarten. Bei Rückkehr: 30 Sek. zum Deaktivieren.</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="../img/alarm-btn1.png" alt="Taste 1" style="height:26px;display:block;margin-bottom:0.4rem;">
+            <strong>Außenmodus</strong>
+          </td>
+          <td>Alles schließen. Taste (1) drücken und Haus innerhalb 30 Sek. verlassen.</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="../img/alarm-btn2.png" alt="Taste 2" style="height:26px;display:block;margin-bottom:0.4rem;">
+            <strong>Innenmodus</strong>
+          </td>
+          <td>Alles schließen. Knopf (2) drücken.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="section" id="checkout">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">03</span>
+      <div class="section-title-wrap">
+        <div class="section-title">Auschecken</div>
+        <div class="section-sub">Zeit, sich zu verabschieden</div>
+      </div>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Am Abreisetag bitten wir Sie, bis <strong>11:00 Uhr</strong> auszuchecken, sofern nichts anderes vereinbart wurde.</p>
+      <div class="notice info">Schlüssel im Schlüsselsafe lassen. Alle Fenster und Türen schließen.</div>
+    </div>
+  </div>
+
+  <div class="section" id="regeln">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">04</span>
+      <div class="section-title-wrap">
+        <div class="section-title">Hausregeln</div>
+        <div class="section-sub">Nur gute Laune</div>
+      </div>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <ul>
+        <li>Rauchen im Haus ist nicht gestattet</li>
+        <li>Ruhezeiten: 23:00 – 08:00 Uhr (besonders im Außenbereich)</li>
+        <li>Partys nur mit vorheriger Genehmigung</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="schluessel">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">05</span>
+      <div class="section-title-wrap">
+        <div class="section-title">Schlüssel</div>
+        <div class="section-sub">Lassen Sie sich selbst ein</div>
+      </div>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Bei Ankunft erhalten Sie einen Schlüsselsatz für Gartentor und Haupteingang.</p>
+      <div class="notice info">
+        <strong>Schlüsselsafe</strong> — linke Ecke gegenüber der Eingangstür. Code vom Hausverwalter auf Anfrage.
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="kueche">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">06</span>
+      <div class="section-title-wrap">
+        <div class="section-title">Küche</div>
+        <div class="section-sub">Kulinarische Köstlichkeiten</div>
+      </div>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Alle Küchenutensilien und -geräte stehen zur freien Verwendung. Fehlt etwas — bitte kurz melden.</p>
+      <div class="notice warn">
+        Das Induktionskochfeld funktioniert ausschließlich mit <strong>Induktionskochgeschirr</strong>.
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="waesche">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">07</span>
+      <div class="section-title-wrap">
+        <div class="section-title">Wäsche</div>
+        <div class="section-sub">Frisch und flauschig</div>
+      </div>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p><strong>Hauswirtschaftsraum hinter der Küche:</strong></p>
+      <ul>
+        <li>Waschmaschine</li>
+        <li>Wäschetrockner</li>
+        <li>Bügeleisen &amp; Bügelbrett</li>
+        <li>Wäscheständer</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="pool">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">08</span>
+      <div class="section-title-wrap">
+        <div class="section-title">Pool-Heizung</div>
+        <div class="section-sub">Kühle Tage, warmes Wasser</div>
+      </div>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Der Pool ist mit einem Heizsystem für die kühleren Monate ausgestattet.</p>
+      <div class="notice info">Nur auf <strong>vorherige Anfrage</strong> — gegen Aufpreis.</div>
+    </div>
+  </div>
+
+  <div class="section" id="tv">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">09</span>
+      <div class="section-title-wrap">
+        <div class="section-title">TV</div>
+        <div class="section-sub">Stream &amp; Chill</div>
+      </div>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Der Fernseher ist mit dem Internet verbunden. Kanäle in verschiedenen Sprachen und Ihre Streaming-Dienste mit eigenen Zugangsdaten stehen bereit.</p>
+    </div>
+  </div>
+
+  <div class="section" id="abfall">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">10</span>
+      <div class="section-title-wrap">
+        <div class="section-title">Abfallentsorgung</div>
+        <div class="section-sub">Sauber &amp; Grün</div>
+      </div>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Bitte Abfall nach lokalen Vorschriften trennen:</p>
+      <ul>
+        <li><strong>Restmüll</strong> — Container direkt neben dem Haus, täglich geleert</li>
+        <li><strong>Glasrecycling</strong> — etwas weiter die Straße hinauf</li>
+        <li><strong>Wertstoffe</strong> — weiter oben oder unten die Straße</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section" id="wifi">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">11</span>
+      <div class="section-title-wrap">
+        <div class="section-title">WiFi</div>
+        <div class="section-sub">Verbunden bleiben</div>
+      </div>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Kostenlos in der ganzen Villa und im Poolbereich.</p>
+      <div class="wifi-grid">
+        <div class="wifi-cell">
+          <div class="label">Netzwerkname</div>
+          <div class="value">CasNinsLovesYou</div>
+        </div>
+        <div class="wifi-cell">
+          <div class="label">Passwort</div>
+          <div class="value">YouLoveCasNins1234</div>
+        </div>
+      </div>
+      <div class="qr-wrap">
+        <img src="../img/wifi-qr.png" alt="WiFi QR-Code">
+        <p>QR-Code scannen zum Verbinden</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="kontakt">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">12</span>
+      <div class="section-title-wrap">
+        <div class="section-title">Kontakt</div>
+        <div class="section-sub">Immer für Sie da</div>
+      </div>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Bei Problemen oder im Notfall:</p>
+      <div class="contact-block">
+        <div>
+          <div class="contact-name">Florian Plett</div>
+          <div class="contact-role">Hausverwalter</div>
+        </div>
+        <a class="contact-phone" href="tel:+4915233762945">Jetzt anrufen</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-brand">Villa <span>Cas Nins</span> · Mallorca</div>
+  <a href="/en/">English Version</a>
+</footer>
+
+<script>
+function toggle(header) {
+  header.classList.toggle('open');
+  header.nextElementSibling.classList.toggle('open');
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const first = document.querySelector('.section-header');
+  if (first) toggle(first);
+});
+</script>
+
+</body>
+</html>

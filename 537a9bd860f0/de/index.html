@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Villa Cas Nins · Mallorca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold:       #B89A6A;
+      --gold-light: #D4B896;
+      --black:      #111111;
+      --off-white:  #F8F6F2;
+      --cream:      #EDE8DF;
+      --text:       #2A2A2A;
+      --text-light: #7A7166;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      background: var(--off-white);
+      color: var(--text);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── LANG SWITCH ── */
+    .lang-bar {
+      background: var(--black);
+      display: flex;
+      justify-content: flex-end;
+      padding: 0.6rem 2.5rem;
+      gap: 1.5rem;
+    }
+    .lang-bar a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #888;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .lang-bar a.active, .lang-bar a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 78vh;
+      min-height: 460px;
+      overflow: hidden;
+    }
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+      filter: brightness(0.72);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1.4rem;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      color: #fff;
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.4rem;
+    }
+    .hero-rule {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 1.4rem;
+    }
+    .hero-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── NAV ── */
+    nav.toc {
+      background: var(--black);
+      padding: 0 2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav.toc a {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #888;
+      text-decoration: none;
+      padding: 1.1rem 1.1rem;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+    nav.toc a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ── INTRO ── */
+    .intro {
+      max-width: 680px;
+      margin: 5rem auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+    .intro p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text);
+    }
+
+    /* ── SECTIONS ── */
+    .sections {
+      max-width: 800px;
+      margin: 0 auto 6rem;
+      padding: 0 2rem;
+    }
+    .section {
+      border-top: 1px solid var(--cream);
+    }
+    .section:last-child { border-bottom: 1px solid var(--cream); }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      padding: 1.4rem 0;
+      cursor: pointer;
+      user-select: none;
+      gap: 1.5rem;
+    }
+    .section-header:hover .section-title { color: var(--gold); }
+
+    .section-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      color: var(--gold);
+      min-width: 1.8rem;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text);
+      flex: 1;
+      transition: color 0.2s;
+    }
+    .section-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+    .section-toggle {
+      font-size: 1rem;
+      color: var(--gold);
+      transition: transform 0.3s ease;
+      line-height: 1;
+    }
+    .section-header.open .section-toggle { transform: rotate(45deg); }
+
+    .section-body {
+      display: none;
+      padding: 0 0 2.5rem 3.3rem;
+    }
+    .section-body.open { display: block; }
+
+    .section-body p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    .section-body ul {
+      list-style: none;
+      margin: 0.5rem 0 1rem;
+    }
+    .section-body ul li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--cream);
+      color: var(--text);
+    }
+    .section-body ul li:last-child { border-bottom: none; }
+    .section-body h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 1.8rem 0 0.8rem;
+    }
+
+    /* ── NOTICE BOXES ── */
+    .notice {
+      margin: 1rem 0;
+      padding: 1rem 1.4rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+    .notice.info { border-left: 2px solid var(--gold); background: rgba(184,154,106,0.07); }
+    .notice.warn { border-left: 2px solid #C4973A; background: rgba(196,151,58,0.07); }
+    .notice.tip  { border-left: 2px solid #8BAF7A; background: rgba(139,175,122,0.07); }
+
+    /* ── ALARM ── */
+    .alarm-mode {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--cream);
+    }
+    .alarm-mode:last-of-type { border-bottom: none; }
+    .alarm-mode strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+    .alarm-mode span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+    .alarm-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    .alarm-table td {
+      padding: 0.9rem 0.5rem;
+      border-bottom: 1px solid var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      vertical-align: top;
+      color: var(--text);
+    }
+    .alarm-table tr:last-child td { border-bottom: none; }
+    .alarm-table td:first-child { width: 42%; }
+    .alarm-table td strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.63rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    /* ── WIFI ── */
+    .wifi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--cream);
+      margin: 1rem 0;
+      border: 1px solid var(--cream);
+    }
+    .wifi-cell {
+      background: var(--off-white);
+      padding: 1.2rem 1.4rem;
+    }
+    .wifi-cell .label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .wifi-cell .value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+    .qr-wrap {
+      text-align: center;
+      padding: 1.5rem 0 0.5rem;
+    }
+    .qr-wrap img { width: 130px; }
+    .qr-wrap p {
+      font-size: 0.65rem !important;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-light) !important;
+      margin-top: 0.6rem !important;
+    }
+
+    /* ── CONTACT ── */
+    .contact-block {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--cream);
+    }
+    .contact-block:last-child { border-bottom: none; }
+    .contact-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+    }
+    .contact-role {
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-top: 0.2rem;
+    }
+    .contact-phone {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .contact-phone:hover { border-bottom-color: var(--gold); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      color: #555;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .footer-rule {
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 1.5rem;
+    }
+    footer p {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.8rem; }
+      nav.toc { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding: 0 1rem; }
+      nav.toc a { padding: 1rem 0.8rem; }
+      .section-body { padding-left: 0; }
+      .wifi-grid { grid-template-columns: 1fr; }
+      .alarm-table td:first-child { width: auto; }
+      .lang-bar { padding: 0.6rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Lang -->
+<div class="lang-bar">
+  <a href="/en/">EN</a>
+  <a href="/de/" class="active">DE</a>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <img src="../img/banner.jpg" alt="Villa Cas Nins">
+  <div class="hero-overlay">
+    <div class="hero-eyebrow">Willkommen in Ihrer Villa</div>
+    <h1>Cas Nins</h1>
+    <div class="hero-rule"></div>
+    <div class="hero-sub">Mallorca · Ihr Zuhause, leicht gemacht</div>
+  </div>
+</div>
+
+<!-- Sticky Nav -->
+<nav class="toc">
+  <a href="#klima">Klimatisierung</a>
+  <a href="#alarm">Alarmanlage</a>
+  <a href="#checkout">Auschecken</a>
+  <a href="#regeln">Hausregeln</a>
+  <a href="#schluessel">Schlüssel</a>
+  <a href="#kueche">Küche</a>
+  <a href="#waesche">Wäsche</a>
+  <a href="#pool">Pool</a>
+  <a href="#tv">TV</a>
+  <a href="#abfall">Abfall</a>
+  <a href="#wifi">WiFi</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
+
+<!-- Intro -->
+<div class="intro">
+  <p>Vielen Dank, dass Sie sich für die Villa Cas Nins entschieden haben. Wir freuen uns, Sie auf der schönen Insel Mallorca begrüßen zu dürfen und werden alles daran setzen, Ihren Urlaub unvergesslich zu machen.</p>
+</div>
+
+<!-- Sections -->
+<div class="sections">
+
+  <!-- 01 Klimatisierung -->
+  <div class="section" id="klima">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">01</span>
+      <span class="section-title">Klimatisierung</span>
+      <span class="section-sub">Kühl und gemütlich</span>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Die Villa Cas Nins ist vollständig mit einer Klimaanlage ausgestattet, die sowohl kühlen als auch heizen kann. Die Fernbedienungen befinden sich in den jeweiligen Bereichen des Wohnzimmers, der Küche und der Schlafzimmer.</p>
+      <div class="notice tip">
+        Um optimalen Komfort und Energieeffizienz zu gewährleisten, bitten wir Sie, Türen und Fenster geschlossen zu halten, während das System in Betrieb ist.
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 Alarmanlage -->
+  <div class="section" id="alarm">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">02</span>
+      <span class="section-title">Alarmanlage</span>
+      <span class="section-sub">Sicher und gut</span>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Das Haus ist durch eine moderne Alarmanlage gesichert. Die Gegend ist für ihre allgemeine Sicherheit bekannt — wir laden Sie ein, das System nach Belieben zu nutzen.</p>
+      <div class="notice warn">
+        Bitte beachten Sie: Falsche Alarme können zu Polizeieinsätzen führen.
+      </div>
+      <img src="../img/alarm-panel.png" alt="Alarm-Bedienfeld" style="max-width:100%;margin:1.5rem 0;display:block;">
+      <h3>Die drei Modi</h3>
+      <div class="alarm-mode">
+        <strong>Ungesichert</strong>
+        <span>Wenn Sie zu Hause sind und sich frei bewegen möchten. Es wird kein Alarm ausgelöst.</span>
+      </div>
+      <div class="alarm-mode">
+        <strong>Gesicherter Außenbereich</strong>
+        <span>Wenn alle das Haus verlassen. Alarm bei geöffneten Türen/Fenstern und durch Bewegungsmelder.</span>
+      </div>
+      <div class="alarm-mode">
+        <strong>Gesicherter Innenbereich</strong>
+        <span>Für die Nacht. Alarm nur bei geöffneten Türen/Fenstern — keine Bewegungssensoren.</span>
+      </div>
+      <h3>Bedienung</h3>
+      <table class="alarm-table">
+        <tr>
+          <td>
+            <img src="../img/alarm-key.png" alt="Schlüsselanhänger" style="height:26px;vertical-align:middle;margin-bottom:0.4rem;display:block;">
+            <strong>Alarm ausschalten</strong>
+          </td>
+          <td>Schlüsselanhänger in die Mitte des Panels legen, bis Piepton ertönt. Bei Rückkehr: 30 Sekunden zum Deaktivieren.</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="../img/alarm-btn1.png" alt="Taste 1" style="height:26px;vertical-align:middle;margin-bottom:0.4rem;display:block;">
+            <strong>Außenmodus aktivieren</strong>
+          </td>
+          <td>Alle Türen, Rollläden und Fenster schließen. Taste (1) drücken und Haus innerhalb von 30 Sekunden verlassen.</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="../img/alarm-btn2.png" alt="Taste 2" style="height:26px;vertical-align:middle;margin-bottom:0.4rem;display:block;">
+            <strong>Innenmodus aktivieren</strong>
+          </td>
+          <td>Alle Türen, Rollläden und Fenster schließen. Knopf (2) drücken.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 03 Auschecken -->
+  <div class="section" id="checkout">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">03</span>
+      <span class="section-title">Auschecken</span>
+      <span class="section-sub">Zeit, sich zu verabschieden</span>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Am Abreisetag checken Sie bitte bis <strong>11:00 Uhr</strong> aus, sofern nichts anderes vereinbart wurde.</p>
+      <div class="notice info">
+        Bitte lassen Sie die Schlüssel im Schlüsselsafe und stellen Sie sicher, dass alle Fenster und Türen geschlossen sind.
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 Hausregeln -->
+  <div class="section" id="regeln">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">04</span>
+      <span class="section-title">Hausregeln</span>
+      <span class="section-sub">Nur gute Laune</span>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <ul>
+        <li>Rauchen ist im Haus verboten</li>
+        <li>Ruhezeiten: 23:00 – 08:00 Uhr (insbesondere im Außenbereich)</li>
+        <li>Partys oder Veranstaltungen nur mit vorheriger Genehmigung</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 05 Schlüssel -->
+  <div class="section" id="schluessel">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">05</span>
+      <span class="section-title">Schlüssel</span>
+      <span class="section-sub">Lassen Sie sich selbst ein</span>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Bei Ihrer Ankunft erhalten Sie einen Satz Schlüssel für das Gartentor und den Haupteingang.</p>
+      <div class="notice info">
+        Zu Ihrer Bequemlichkeit gibt es einen <strong>Schlüsselsafe</strong> in der linken Ecke gegenüber der Eingangstür. Den Code erhalten Sie von unserem Hausverwalter.
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 Küche -->
+  <div class="section" id="kueche">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">06</span>
+      <span class="section-title">Küche</span>
+      <span class="section-sub">Kulinarische Köstlichkeiten</span>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Während Ihres Aufenthaltes können Sie gerne alle verfügbaren Küchenutensilien und -geräte benutzen. Sollten Sie etwas vermissen, teilen Sie uns dies bitte mit.</p>
+      <div class="notice warn">
+        Das Induktionskochfeld kann nur mit <strong>Induktionskochgeschirr</strong> verwendet werden.
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 Wäsche -->
+  <div class="section" id="waesche">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">07</span>
+      <span class="section-title">Wäsche</span>
+      <span class="section-sub">Frisch und flauschig</span>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Im <strong>Hauswirtschaftsraum hinter der Küche</strong> finden Sie:</p>
+      <ul>
+        <li>Waschmaschine</li>
+        <li>Wäschetrockner</li>
+        <li>Bügeleisen &amp; Bügelbrett</li>
+        <li>Wäscheständer</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 08 Pool -->
+  <div class="section" id="pool">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">08</span>
+      <span class="section-title">Pool-Heizung</span>
+      <span class="section-sub">Kühle Tage, warmes Wasser</span>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Der Pool ist mit einem Heizsystem ausgestattet, das in den kühleren Monaten genutzt werden kann.</p>
+      <div class="notice info">
+        Die Beheizung ist nur auf <strong>vorherige Anfrage</strong> und gegen eine zusätzliche Gebühr möglich.
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 TV -->
+  <div class="section" id="tv">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">09</span>
+      <span class="section-title">TV</span>
+      <span class="section-sub">Stream &amp; Chill</span>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Der Fernseher ist betriebsbereit und bereits mit dem Internet verbunden. Sie können eine Auswahl an Kanälen in verschiedenen Sprachen genießen und mit Ihren persönlichen Anmeldedaten auf Ihre bevorzugten Streaming-Dienste zugreifen.</p>
+    </div>
+  </div>
+
+  <!-- 10 Abfall -->
+  <div class="section" id="abfall">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">10</span>
+      <span class="section-title">Abfallentsorgung</span>
+      <span class="section-sub">Sauber &amp; Grün</span>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Wir bitten Sie, Ihren Abfall entsprechend den örtlichen Vorschriften zu trennen:</p>
+      <ul>
+        <li><strong>Restmüll</strong> — Container an der Straße direkt neben dem Haus, täglich geleert</li>
+        <li><strong>Glasrecycling</strong> — Container ein Stück weiter die Straße hinauf</li>
+        <li><strong>Wertstoffe</strong> — Container weiter oben oder unten die Straße</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 11 WiFi -->
+  <div class="section" id="wifi">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">11</span>
+      <span class="section-title">WiFi</span>
+      <span class="section-sub">Verbunden bleiben</span>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Kostenloses Wi-Fi ist während des gesamten Aufenthalts verfügbar, sowohl in der Villa als auch im Poolbereich.</p>
+      <div class="wifi-grid">
+        <div class="wifi-cell">
+          <div class="label">Netzwerkname</div>
+          <div class="value">CasNinsLovesYou</div>
+        </div>
+        <div class="wifi-cell">
+          <div class="label">Passwort</div>
+          <div class="value">YouLoveCasNins1234</div>
+        </div>
+      </div>
+      <div class="qr-wrap">
+        <img src="../img/wifi-qr.png" alt="WiFi QR-Code">
+        <p>QR-Code scannen zum direkten Verbinden</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12 Kontakt -->
+  <div class="section" id="kontakt">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-num">12</span>
+      <span class="section-title">Kontakt</span>
+      <span class="section-sub">Nur für den Fall</span>
+      <span class="section-toggle">+</span>
+    </div>
+    <div class="section-body">
+      <p>Sollten Sie während Ihres Aufenthaltes auf Probleme stoßen oder einen Notfall haben:</p>
+      <div class="contact-block">
+        <div>
+          <div class="contact-name">Florian Plett</div>
+          <div class="contact-role">Hausverwalter</div>
+        </div>
+        <a class="contact-phone" href="tel:+4915233762945">+49 152 337 629 45</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-rule"></div>
+  <p>Villa Cas Nins · Mallorca</p>
+  <a href="/en/">English Version</a>
+</footer>
+
+<script>
+function toggle(header) {
+  const isOpen = header.classList.contains('open');
+  header.classList.toggle('open');
+  header.nextElementSibling.classList.toggle('open');
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const first = document.querySelector('.section-header');
+  if (first) toggle(first);
+});
+</script>
+
+</body>
+</html>
