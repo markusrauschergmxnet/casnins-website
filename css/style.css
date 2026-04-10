@@ -1,0 +1,126 @@
+:root {
+  --primary: #2c7a4b;
+  --primary-light: #e8f5ee;
+  --text: #2d2d2d;
+  --text-light: #666;
+  --bg: #ffffff;
+  --border: #e0e0e0;
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+  background: #f7f7f5;
+  line-height: 1.6;
+}
+
+header {
+  background: var(--primary);
+  color: white;
+  padding: 2rem 1.5rem 3rem;
+  text-align: center;
+  position: relative;
+}
+header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+header p { opacity: 0.85; font-size: 1.05rem; }
+
+.lang-switch {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.lang-switch a {
+  color: white;
+  text-decoration: none;
+  background: rgba(255,255,255,0.2);
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.lang-switch a:hover, .lang-switch a.active { background: rgba(255,255,255,0.4); }
+
+nav.toc {
+  background: white;
+  margin: -1.5rem 1rem 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+nav.toc a {
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 20px;
+  border: 1px solid var(--primary);
+  white-space: nowrap;
+}
+nav.toc a:hover { background: var(--primary-light); }
+
+main {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+.section {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+.section-header {
+  background: var(--primary-light);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+}
+.section-header .icon { font-size: 1.4rem; }
+.section-header h2 { font-size: 1.1rem; font-weight: 600; color: var(--primary); flex: 1; }
+.section-header .toggle { color: var(--primary); font-size: 1.2rem; transition: transform 0.2s; }
+.section-header.open .toggle { transform: rotate(180deg); }
+
+.section-body { padding: 1.25rem 1.5rem; display: none; }
+.section-body.open { display: block; }
+
+.section-body p { margin-bottom: 0.8rem; }
+.section-body ul, .section-body ol { margin: 0.5rem 0 0.8rem 1.5rem; }
+.section-body li { margin-bottom: 0.4rem; }
+.section-body h3 { font-size: 1rem; font-weight: 600; color: var(--primary); margin: 1rem 0 0.5rem; }
+
+.box { border-radius: 8px; padding: 1rem 1.2rem; margin: 0.8rem 0; font-size: 0.95rem; }
+.box.info { background: #e8f4fd; border-left: 3px solid #3498db; }
+.box.warn { background: #fff8e6; border-left: 3px solid #f39c12; }
+.box.tip  { background: var(--primary-light); border-left: 3px solid var(--primary); }
+
+.wifi-box { background: #f0f0f0; border-radius: 8px; padding: 1rem 1.2rem; margin: 0.8rem 0; }
+.wifi-box .label { font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.2rem; }
+.wifi-box .value { font-family: monospace; font-size: 1.05rem; }
+
+.contact-card { display: flex; align-items: center; gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--border); }
+.contact-card:last-child { border-bottom: none; }
+.contact-card .name { font-weight: 600; }
+.contact-card .role { font-size: 0.85rem; color: var(--text-light); }
+.contact-card a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+footer { text-align: center; padding: 2rem; color: var(--text-light); font-size: 0.85rem; }
+
+@media (max-width: 600px) {
+  header h1 { font-size: 1.5rem; }
+  nav.toc { margin: -1rem 0.5rem 1rem; }
+  main { padding: 0 0.5rem 2rem; }
+}
