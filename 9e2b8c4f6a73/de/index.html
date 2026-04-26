@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Villa Cas Nins · Mallorca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #FFFFFF;
+      --bg-soft:   #FAFAF9;
+      --ink:       #111111;
+      --ink-2:     #2A2A2A;
+      --grey:      #6B6B6B;
+      --grey-2:    #9A9A9A;
+      --line:      #E8E8E6;
+      --line-soft: #F0F0EE;
+      --accent:    #6E869C;     /* dusty Nordic blue */
+      --accent-2:  #C9D2DA;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: -0.005em;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .brand .dot {
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      margin: 0 0.7rem;
+      vertical-align: middle;
+    }
+    .lang-bar {
+      display: flex;
+      gap: 1.4rem;
+    }
+    .lang-bar a {
+      font-size: 0.74rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey-2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .lang-bar a:hover { color: var(--ink); }
+    .lang-bar a.active { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 2.4rem 3rem;
+    }
+    .hero-eyebrow {
+      font-size: 0.74rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-weight: 300;
+      font-size: clamp(2.6rem, 7vw, 5.4rem);
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      max-width: 900px;
+    }
+    .hero-title em {
+      font-weight: 300;
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-meta {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey);
+      flex-wrap: wrap;
+    }
+    .hero-meta span strong {
+      display: block;
+      color: var(--ink);
+      font-weight: 500;
+      margin-top: 0.3rem;
+      font-size: 0.92rem;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .hero-image-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2.4rem 4rem;
+    }
+    .hero-image-wrap img {
+      width: 100%;
+      height: 64vh;
+      min-height: 420px;
+      max-height: 640px;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: saturate(0.85);
+    }
+
+    /* ── INTRO ── */
+    .intro-wrap {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 0 2.4rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      border-top: 1px solid var(--line);
+      padding-top: 4rem;
+    }
+    .intro-label {
+      font-size: 0.74rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey);
+      font-weight: 500;
+    }
+    .intro-text {
+      font-size: 1.35rem;
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      color: var(--ink-2);
+      max-width: 720px;
+    }
+
+    /* ── TOC ── */
+    .toc-wrap {
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+      padding: 2rem 2.4rem;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0;
+    }
+    .toc a {
+      display: flex;
+      align-items: baseline;
+      gap: 0.7rem;
+      padding: 0.6rem 0.4rem;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: var(--accent); }
+    .toc a .num {
+      font-size: 0.7rem;
+      color: var(--grey-2);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2.4rem 6rem;
+    }
+
+    .section {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      padding: 4rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .section:last-child { border-bottom: 1px solid var(--line); }
+
+    .section-meta .num {
+      font-size: 0.78rem;
+      color: var(--grey-2);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+    .section-meta h2 {
+      font-size: 1.95rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .section-meta .sub {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--grey);
+      letter-spacing: 0.04em;
+    }
+
+    .section-body {
+      font-size: 1rem;
+      color: var(--ink-2);
+      max-width: 680px;
+    }
+    .section-body p { margin-bottom: 1rem; }
+    .section-body p:last-child { margin-bottom: 0; }
+    .section-body strong { font-weight: 500; color: var(--ink); }
+
+    /* ── LISTS ── */
+    .section-body ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+    }
+    .section-body ul li {
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--line-soft);
+      display: grid;
+      grid-template-columns: 1.5rem 1fr;
+      gap: 0.6rem;
+      align-items: baseline;
+    }
+    .section-body ul li::before {
+      content: "—";
+      color: var(--accent);
+    }
+    .section-body ul li:last-child { border-bottom: none; }
+
+    /* ── BOXES (callouts) ── */
+    .box {
+      padding: 1.2rem 1.4rem;
+      margin: 1.4rem 0 0.5rem;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      border-left: 2px solid;
+      background: var(--bg-soft);
+    }
+    .box.tip   { border-color: var(--accent); }
+    .box.warn  { border-color: #B85A50; background: #FBF4F2; }
+    .box.info  { border-color: var(--accent); }
+    .box .label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+    }
+    .box.warn .label { color: #B85A50; }
+
+    /* ── ALARM ── */
+    .alarm-img {
+      max-width: 100%;
+      margin: 1.4rem 0;
+      filter: saturate(0.9);
+    }
+    .modes {
+      margin-top: 1rem;
+      border-top: 1px solid var(--line-soft);
+    }
+    .mode {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line-soft);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 1.2rem;
+      align-items: baseline;
+    }
+    .mode-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .alarm-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      border-top: 1px solid var(--line-soft);
+    }
+    .alarm-table td {
+      padding: 1rem 0.5rem;
+      border-bottom: 1px solid var(--line-soft);
+      vertical-align: top;
+      font-size: 0.92rem;
+    }
+    .alarm-table td:first-child { width: 38%; }
+    .alarm-table strong { font-size: 0.95rem; }
+    .alarm-table img {
+      display: block;
+      height: 24px;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── WIFI ── */
+    .wifi-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin: 1rem 0;
+    }
+    .wifi-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1.4rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line-soft);
+      align-items: baseline;
+    }
+    .wifi-row .label {
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+    .wifi-row .value {
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: 0.005em;
+      font-feature-settings: "tnum";
+    }
+    .wifi-qr {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: var(--bg-soft);
+      text-align: center;
+    }
+    .wifi-qr img {
+      max-width: 180px;
+      background: #fff;
+      padding: 12px;
+      display: inline-block;
+    }
+    .wifi-qr p {
+      margin-top: 0.8rem;
+      font-size: 0.78rem;
+      color: var(--grey);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── CONTACT ── */
+    .contact-block {
+      margin-top: 1rem;
+      padding: 1.6rem 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .contact-block .name {
+      font-size: 1.25rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+    .contact-block .role {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-top: 0.3rem;
+    }
+    .contact-block a {
+      color: var(--ink);
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border: 1px solid var(--ink);
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+    }
+    .contact-block a:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 2.4rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+    footer a { color: var(--ink); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 800px) {
+      .hero { padding: 3.5rem 1.4rem 2rem; }
+      .hero-image-wrap { padding: 0 1.4rem 3rem; }
+      .hero-image-wrap img { height: 50vh; min-height: 320px; }
+      .intro-wrap, .toc-wrap, main { padding-left: 1.4rem; padding-right: 1.4rem; }
+      .intro-wrap { grid-template-columns: 1fr; gap: 1.5rem; }
+      .toc-wrap { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+      .section { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0; }
+      .section-meta h2 { font-size: 1.6rem; }
+      .alarm-table td:first-child { width: 50%; }
+      .mode { grid-template-columns: 1fr; gap: 0.4rem; }
+      .wifi-row { grid-template-columns: 1fr; gap: 0.3rem; }
+      footer { padding: 2rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Villa Cas Nins<span class="dot"></span>Mallorca</div>
+    <div class="lang-bar">
+      <a href="/en/">EN</a>
+      <a href="/de/" class="active">DE</a>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-eyebrow">Gästehandbuch · 2026</div>
+  <h1 class="hero-title">Ein ruhiges Haus,<br><em>klar gemacht.</em></h1>
+  <div class="hero-meta">
+    <span>Ort<strong>Mallorca, ES</strong></span>
+    <span>Stil<strong>Privat · Selbst-Check-in</strong></span>
+    <span>Sprachen<strong>Deutsch · English</strong></span>
+  </div>
+</header>
+
+<div class="hero-image-wrap">
+  <img src="../img/banner.jpg" alt="Villa Cas Nins">
+</div>
+
+<div class="intro-wrap">
+  <div class="intro-label">Willkommen</div>
+  <p class="intro-text">Vielen Dank, dass Sie sich für die Villa Cas Nins entschieden haben. Wir freuen uns, Sie auf der schönen Insel Mallorca begrüßen zu dürfen — und hoffen, dass Sie sich vom ersten Moment an wie zu Hause fühlen.</p>
+</div>
+
+<div class="toc-wrap">
+  <nav class="toc">
+    <a href="#klima"><span class="num">01</span>Klimatisierung</a>
+    <a href="#alarm"><span class="num">02</span>Alarmanlage</a>
+    <a href="#checkout"><span class="num">03</span>Auschecken</a>
+    <a href="#regeln"><span class="num">04</span>Hausregeln</a>
+    <a href="#schluessel"><span class="num">05</span>Schlüssel</a>
+    <a href="#kueche"><span class="num">06</span>Küche</a>
+    <a href="#waesche"><span class="num">07</span>Wäsche</a>
+    <a href="#pool"><span class="num">08</span>Pool</a>
+    <a href="#tv"><span class="num">09</span>TV</a>
+    <a href="#abfall"><span class="num">10</span>Abfall</a>
+    <a href="#wifi"><span class="num">11</span>WiFi</a>
+    <a href="#kontakt"><span class="num">12</span>Kontakt</a>
+  </nav>
+</div>
+
+<main>
+
+  <section class="section" id="klima">
+    <div class="section-meta">
+      <div class="num">01 / 12</div>
+      <h2>Klimatisierung</h2>
+      <span class="sub">Kühl und gemütlich</span>
+    </div>
+    <div class="section-body">
+      <p>Die Villa Cas Nins ist vollständig mit einer Klimaanlage ausgestattet, die sowohl kühlen als auch heizen kann. Die Fernbedienungen befinden sich in den jeweiligen Bereichen des Wohnzimmers, der Küche und der Schlafzimmer.</p>
+      <div class="box tip">
+        <span class="label">Hinweis</span>
+        Für optimalen Komfort und Energieeffizienz Türen und Fenster geschlossen halten, während das System läuft.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="alarm">
+    <div class="section-meta">
+      <div class="num">02 / 12</div>
+      <h2>Alarmanlage</h2>
+      <span class="sub">Sicher und gut</span>
+    </div>
+    <div class="section-body">
+      <p>Das Haus ist durch eine moderne Alarmanlage gesichert. Wir laden Sie ein, sie zu benutzen, obwohl die Gegend für ihre allgemeine Sicherheit bekannt ist.</p>
+      <div class="box warn">
+        <span class="label">Achtung</span>
+        Falsche Alarme können zu Polizeieinsätzen führen.
+      </div>
+
+      <img class="alarm-img" src="../img/alarm-panel.png" alt="Alarm-Bedienfeld">
+
+      <div class="modes">
+        <div class="mode">
+          <div class="mode-label">Modus 01</div>
+          <div><strong>Ungesichert.</strong> Wählen Sie, wenn Sie zu Hause sind und sich frei im Haus und im Außenbereich bewegen wollen. Es wird kein Alarm ausgelöst.</div>
+        </div>
+        <div class="mode">
+          <div class="mode-label">Modus 02</div>
+          <div><strong>Gesicherter Außenbereich.</strong> Wählen Sie, wenn Sie alle das Haus verlassen. Der Alarm wird ausgelöst bei geöffneten Türen / Fenstern und durch Bewegungsmelder im Haus.</div>
+        </div>
+        <div class="mode">
+          <div class="mode-label">Modus 03</div>
+          <div><strong>Gesicherter Innenbereich.</strong> Wählen Sie für die Nacht. Alarm nur bei geöffneten Türen / Fenstern — keine Bewegungssensoren. Sie können sich frei im Haus bewegen.</div>
+        </div>
+      </div>
+
+      <table class="alarm-table">
+        <tr>
+          <td>
+            <img src="../img/alarm-key.png" alt="Schlüsselanhänger">
+            <strong>Alarm ausschalten</strong>
+          </td>
+          <td>Schlüsselanhänger in die Mitte des Panels legen, bis Piepton ertönt. Bei Rückkehr: 30 Sekunden Zeit zum Deaktivieren.</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="../img/alarm-btn1.png" alt="Taste 1">
+            <strong>Außenmodus aktivieren</strong>
+          </td>
+          <td>Alle Türen, Rollläden und Fenster schließen. Taste (1) drücken und Haus innerhalb von 30 Sekunden verlassen.</td>
+        </tr>
+        <tr>
+          <td>
+            <img src="../img/alarm-btn2.png" alt="Taste 2">
+            <strong>Innenmodus aktivieren</strong>
+          </td>
+          <td>Alle Türen, Rollläden und Fenster schließen. Knopf (2) drücken.</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" id="checkout">
+    <div class="section-meta">
+      <div class="num">03 / 12</div>
+      <h2>Auschecken</h2>
+      <span class="sub">Zeit, sich zu verabschieden</span>
+    </div>
+    <div class="section-body">
+      <p>Am Abreisetag checken Sie bitte <strong>bis 11:00 Uhr</strong> aus, sofern nichts anderes vereinbart wurde.</p>
+      <div class="box info">
+        <span class="label">Bitte beachten</span>
+        Schlüssel im Schlüsselsafe lassen und sicherstellen, dass alle Fenster und Türen geschlossen sind.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="regeln">
+    <div class="section-meta">
+      <div class="num">04 / 12</div>
+      <h2>Hausregeln</h2>
+      <span class="sub">Nur gute Laune</span>
+    </div>
+    <div class="section-body">
+      <ul>
+        <li>Rauchen ist im Haus verboten.</li>
+        <li>Ruhezeiten 23:00 – 08:00 Uhr (insbesondere im Außenbereich).</li>
+        <li>Partys oder Veranstaltungen nur mit vorheriger Genehmigung.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="schluessel">
+    <div class="section-meta">
+      <div class="num">05 / 12</div>
+      <h2>Schlüssel</h2>
+      <span class="sub">Lassen Sie sich selbst ein</span>
+    </div>
+    <div class="section-body">
+      <p>Bei Ihrer Ankunft erhalten Sie einen Satz Schlüssel für das Gartentor und den Haupteingang.</p>
+      <div class="box info">
+        <span class="label">Schlüsselsafe</span>
+        Befindet sich in der linken Ecke gegenüber der Eingangstür. Den Code erhalten Sie bei Bedarf von unserem Hausverwalter.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kueche">
+    <div class="section-meta">
+      <div class="num">06 / 12</div>
+      <h2>Küche</h2>
+      <span class="sub">Kulinarische Köstlichkeiten</span>
+    </div>
+    <div class="section-body">
+      <p>Während Ihres Aufenthaltes können Sie gerne alle verfügbaren Küchenutensilien und -geräte benutzen. Sollten Sie etwas vermissen, zögern Sie bitte nicht, uns dies mitzuteilen.</p>
+      <div class="box warn">
+        <span class="label">Achtung</span>
+        Das Induktionskochfeld kann nur mit <strong>Induktionskochgeschirr</strong> verwendet werden.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="waesche">
+    <div class="section-meta">
+      <div class="num">07 / 12</div>
+      <h2>Wäsche</h2>
+      <span class="sub">Frisch und flauschig</span>
+    </div>
+    <div class="section-body">
+      <p>Im <strong>Hauswirtschaftsraum hinter der Küche</strong> finden Sie:</p>
+      <ul>
+        <li>Waschmaschine</li>
+        <li>Wäschetrockner</li>
+        <li>Bügeleisen &amp; Bügelbrett</li>
+        <li>Wäscheständer</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="pool">
+    <div class="section-meta">
+      <div class="num">08 / 12</div>
+      <h2>Pool-Heizung</h2>
+      <span class="sub">Kühle Tage, warmes Wasser</span>
+    </div>
+    <div class="section-body">
+      <p>Der Pool ist mit einem Heizsystem ausgestattet, das in den kühleren Monaten genutzt werden kann.</p>
+      <div class="box info">
+        <span class="label">Hinweis</span>
+        Die Beheizung ist nur auf <strong>vorherige Anfrage</strong> und gegen eine zusätzliche Gebühr möglich.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tv">
+    <div class="section-meta">
+      <div class="num">09 / 12</div>
+      <h2>Fernsehen</h2>
+      <span class="sub">Stream &amp; Chill</span>
+    </div>
+    <div class="section-body">
+      <p>Der Fernseher ist betriebsbereit und bereits mit dem Internet verbunden. Sie können eine Auswahl an Kanälen in verschiedenen Sprachen genießen und mit Ihren persönlichen Anmeldedaten auf Ihre bevorzugten Streaming-Dienste zugreifen.</p>
+    </div>
+  </section>
+
+  <section class="section" id="abfall">
+    <div class="section-meta">
+      <div class="num">10 / 12</div>
+      <h2>Abfallentsorgung</h2>
+      <span class="sub">Sauber &amp; grün</span>
+    </div>
+    <div class="section-body">
+      <p>Wir bitten Sie, Ihren Abfall entsprechend den örtlichen Vorschriften zu trennen:</p>
+      <ul>
+        <li><strong>Restmüll</strong> — Container an der Straße direkt neben dem Haus, wird täglich geleert.</li>
+        <li><strong>Glasrecycling</strong> — Container ein Stück weiter die Straße hinauf.</li>
+        <li><strong>Wertstoffe</strong> — Container weiter oben oder weiter unten die Straße.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="wifi">
+    <div class="section-meta">
+      <div class="num">11 / 12</div>
+      <h2>WiFi</h2>
+      <span class="sub">Verbunden bleiben</span>
+    </div>
+    <div class="section-body">
+      <p>Kostenloses Wi-Fi ist während des gesamten Aufenthalts verfügbar — sowohl in der Villa als auch im Poolbereich.</p>
+      <div class="wifi-grid">
+        <div class="wifi-row">
+          <div class="label">SSID</div>
+          <div class="value">CasNinsLovesYou</div>
+        </div>
+        <div class="wifi-row">
+          <div class="label">Passwort</div>
+          <div class="value">YouLoveCasNins1234</div>
+        </div>
+      </div>
+      <div class="wifi-qr">
+        <img src="../img/wifi-qr.png" alt="WiFi QR-Code">
+        <p>QR-Code scannen</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kontakt">
+    <div class="section-meta">
+      <div class="num">12 / 12</div>
+      <h2>Kontakt</h2>
+      <span class="sub">Nur für den Fall</span>
+    </div>
+    <div class="section-body">
+      <p>Sollten Sie während Ihres Aufenthaltes auf Probleme stoßen oder einen Notfall haben:</p>
+      <div class="contact-block">
+        <div>
+          <div class="name">Florian Plett</div>
+          <div class="role">Hausverwalter</div>
+        </div>
+        <a href="tel:+4915233762945">+49 152 33762945</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>Villa Cas Nins · Mallorca · ES</div>
+  <div><a href="/en/">English version</a></div>
+</footer>
+
+</body>
+</html>
