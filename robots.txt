@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://casnins.rauschers.club/sitemap.xml
