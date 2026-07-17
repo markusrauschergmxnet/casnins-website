@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Überwintern auf Mallorca · Villa Cas Nins</title>
+  <meta name="description" content="Luxusvilla mit beheiztem Pool in Santa Ponça zum Überwintern (Nov–März). 250 m², 4 Schlafzimmer, beheizte Bäder, 1-Gbit-Glasfaser. Ideal für 2–4 Monate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:    #1A1A1A;
+      --white:    #FFFFFF;
+      --gray:     #F5F5F4;
+      --mid:      #CFCEC9;
+      --text:     #1A1A1A;
+      --muted:    #6E6B66;
+      --accent:   #7B8B73;
+      --accent-2: #DDE2D9;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 400;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--black);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 52px;
+      position: sticky; top: 0; z-index: 20;
+    }
+    .topbar-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800; font-size: 1.3rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--white);
+      text-decoration: none;
+    }
+    .topbar-logo span { color: var(--accent); }
+    .topbar-cta {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--white); text-decoration: none;
+      border: 1px solid var(--accent); padding: 0.45rem 1rem;
+      transition: background 0.15s, color 0.15s;
+    }
+    .topbar-cta:hover { background: var(--accent); color: var(--black); }
+
+    /* ── HERO ── */
+    .hero { position: relative; height: 82vh; min-height: 500px; background: var(--black); overflow: hidden; }
+    .hero img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 40%;
+      display: block; opacity: 0.60; filter: saturate(0.92);
+    }
+    .hero-content {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 4rem 3rem; max-width: 1100px;
+    }
+    .hero-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.30em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;
+    }
+    .hero-label::before {
+      content: ""; display: inline-block; width: 28px; height: 1px;
+      background: var(--accent); vertical-align: middle; margin-right: 0.8rem;
+    }
+    .hero h1 {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: clamp(3rem, 8vw, 6.4rem); line-height: 0.96;
+      text-transform: uppercase; color: var(--white); letter-spacing: -0.005em;
+      margin-bottom: 1.2rem;
+    }
+    .hero p {
+      color: var(--accent-2); font-size: clamp(1.05rem, 2vw, 1.35rem);
+      font-weight: 300; max-width: 620px;
+    }
+
+    /* ── SECTION SHELL ── */
+    .section { max-width: 1040px; margin: 0 auto; padding: 5rem 2rem; }
+    .eyebrow {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3rem); line-height: 1.02; text-transform: uppercase;
+      letter-spacing: -0.005em; margin-bottom: 1.4rem;
+    }
+    .lead { font-size: 1.2rem; font-weight: 300; color: var(--muted); max-width: 720px; }
+
+    /* ── FEATURES GRID ── */
+    .features { background: var(--gray); }
+    .feature-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1px; background: var(--mid); border: 1px solid var(--mid); margin-top: 2.5rem;
+    }
+    .feature {
+      background: var(--white); padding: 2rem 1.6rem;
+    }
+    .feature .fnum {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem;
+      letter-spacing: 0.2em; color: var(--accent); font-weight: 700; text-transform: uppercase;
+    }
+    .feature h3 {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.35rem;
+      text-transform: uppercase; margin: 0.5rem 0 0.4rem;
+    }
+    .feature p { color: var(--muted); font-size: 0.98rem; }
+
+    /* ── FACTS STRIP ── */
+    .facts { display: flex; flex-wrap: wrap; gap: 2.5rem; margin-top: 2.5rem; }
+    .fact { flex: 1; min-width: 130px; }
+    .fact .num {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+      font-size: 2.8rem; line-height: 1; color: var(--black);
+    }
+    .fact .lbl { color: var(--muted); font-size: 0.95rem; margin-top: 0.3rem; }
+
+    /* ── CONDITIONS ── */
+    .conditions { background: var(--black); color: var(--white); }
+    .conditions .eyebrow { color: var(--accent); }
+    .conditions h2 { color: var(--white); }
+    .cond-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem; margin-top: 2.5rem;
+    }
+    .cond .k {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem;
+    }
+    .cond .v { font-size: 1.25rem; font-weight: 500; }
+    .cond .v small { display: block; color: var(--mid); font-size: 0.9rem; font-weight: 300; margin-top: 0.2rem; }
+
+    /* ── CTA ── */
+    .cta { text-align: center; }
+    .cta h2 { margin-bottom: 1rem; }
+    .cta p { color: var(--muted); font-size: 1.15rem; max-width: 560px; margin: 0 auto 2rem; }
+    .btn {
+      display: inline-block; font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: 1.05rem; letter-spacing: 0.12em; text-transform: uppercase;
+      background: var(--accent); color: var(--white); text-decoration: none;
+      padding: 1rem 2.4rem; transition: background 0.15s;
+    }
+    .btn:hover { background: #6a7a63; }
+    .cta .mail { margin-top: 1.2rem; font-size: 1rem; color: var(--muted); }
+    .cta .mail a { color: var(--accent); font-weight: 500; text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black); color: var(--mid); text-align: center;
+      padding: 2.5rem 2rem; font-size: 0.85rem;
+    }
+    footer .logo {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.1rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); display: block; margin-bottom: 0.6rem;
+    }
+    footer .logo span { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .hero-content { padding: 2.5rem 1.5rem; }
+      .section { padding: 3.5rem 1.5rem; }
+      .topbar { padding: 0 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a href="/winter/" class="topbar-logo">CAS<span>NINS</span></a>
+    <a href="#anfrage" class="topbar-cta">Anfragen</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="../img/banner.jpg" alt="Villa Cas Nins mit Pool, Santa Ponça, Mallorca">
+    <div class="hero-content">
+      <div class="hero-label">Überwintern auf Mallorca · November – März</div>
+      <h1>Dem Winter<br>entfliehen</h1>
+      <p>Eine gepflegte 5-Sterne-Villa mit beheiztem Pool in Santa Ponça – Sonne, Ruhe und Platz für 2 bis 4 Monate.</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="eyebrow">Villa Cas Nins · Santa Ponça</div>
+    <h2>Der Süden Mallorcas,<br>den ganzen Winter mild</h2>
+    <p class="lead">
+      Während im Norden der Winter grau wird, blüht Mallorca bei milden Temperaturen auf – mit ruhigen Stränden und
+      Sonne bis in den Frühling. Unsere Villa im Südwesten der Insel ist genau dafür gemacht: großzügig, warm und
+      voll ausgestattet, ideal zum Überwintern, für ein paar Monate Auszeit oder ortsunabhängiges Arbeiten am Meer.
+    </p>
+    <div class="facts">
+      <div class="fact"><div class="num">250</div><div class="lbl">m² Wohnfläche</div></div>
+      <div class="fact"><div class="num">4</div><div class="lbl">Schlafzimmer · bis 8 Pers.</div></div>
+      <div class="fact"><div class="num">3</div><div class="lbl">Badezimmer</div></div>
+      <div class="fact"><div class="num">1000</div><div class="lbl">m² Grundstück</div></div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="section" style="padding-top:4.5rem;padding-bottom:4.5rem;">
+      <div class="eyebrow">Ausstattung</div>
+      <h2>Warm, komfortabel,<br>bereit für lange Aufenthalte</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="fnum">01</div>
+          <h3>Beheizbarer Pool</h3>
+          <p>Privater Pool, auch an milden Wintertagen nutzbar – der ganze Garten für Sie allein.</p>
+        </div>
+        <div class="feature">
+          <div class="fnum">02</div>
+          <h3>Warm den ganzen Winter</h3>
+          <p>Beheizte Bäder und Klimaanlagen mit Heizfunktion in allen Wohnräumen.</p>
+        </div>
+        <div class="feature">
+          <div class="fnum">03</div>
+          <h3>Glasfaser 1 Gbit</h3>
+          <p>Schnelles Internet für Homeoffice und Videocalls – arbeiten, wo andere Urlaub machen.</p>
+        </div>
+        <div class="feature">
+          <div class="fnum">04</div>
+          <h3>4 Schlafzimmer</h3>
+          <p>Je ein Doppelbett, bis zu 8 Personen. Platz für Familie und Besuch. 2 Bäder en-suite.</p>
+        </div>
+        <div class="feature">
+          <div class="fnum">05</div>
+          <h3>Voll ausgestattet</h3>
+          <p>Komplette Küche, Waschmaschine &amp; Trockner, sonnige Terrasse, großer Garten, Parkplatz.</p>
+        </div>
+        <div class="feature">
+          <div class="fnum">06</div>
+          <h3>Beste Lage</h3>
+          <p>Ruhig gelegen in Santa Ponça, Strand in ca. 20 Gehminuten. Geschäfte &amp; Ärzte ganzjährig erreichbar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONDITIONS -->
+  <section class="conditions">
+    <div class="section">
+      <div class="eyebrow">Konditionen</div>
+      <h2>Klar und fair</h2>
+      <div class="cond-grid">
+        <div class="cond">
+          <div class="k">Miete</div>
+          <div class="v">5.200 € / Monat<small>zzgl. Strom nach Verbrauch · Wasser &amp; Internet inklusive</small></div>
+        </div>
+        <div class="cond">
+          <div class="k">Zeitraum</div>
+          <div class="v">November – März<small>flexibel innerhalb der Wintersaison</small></div>
+        </div>
+        <div class="cond">
+          <div class="k">Mindestdauer</div>
+          <div class="v">2 Monate<small>ideal für 2 bis 4 Monate am Stück</small></div>
+        </div>
+        <div class="cond">
+          <div class="k">Gut zu wissen</div>
+          <div class="v">Nichtraucher<small>Kaution 1 Monatsmiete · Saisonmietvertrag</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta" id="anfrage">
+    <div class="eyebrow" style="display:inline-block;">Anfrage</div>
+    <h2>Ihren Winter auf<br>Mallorca sichern</h2>
+    <p>Schreiben Sie uns mit Ihrem Wunschzeitraum – wir melden uns zeitnah mit allen Details und Fotos.</p>
+    <a href="mailto:casnins@gmx.net?subject=Anfrage%20Winter-Langzeitmiete%20Cas%20Nins&body=Guten%20Tag%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20die%20Winter-Langzeitmiete%20der%20Villa%20Cas%20Nins.%0A%0AWunschzeitraum%3A%20%0APersonenzahl%3A%20%0A%0AViele%20Gr%C3%BC%C3%9Fe%0A" class="btn">Jetzt anfragen</a>
+    <div class="mail">oder direkt per E-Mail: <a href="mailto:casnins@gmx.net">casnins@gmx.net</a></div>
+  </section>
+
+  <footer>
+    <span class="logo">CAS<span>NINS</span></span>
+    Villa Cas Nins · Santa Ponça, Calvià · Mallorca<br>
+    Winter-Langzeitmiete November – März
+  </footer>
+
+</body>
+</html>
