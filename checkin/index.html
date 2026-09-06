@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gästeanmeldung · Villa Cas Nins</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;1,700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:    #1A1A1A;
+      --white:    #FFFFFF;
+      --gray:     #F5F5F4;
+      --mid:      #CFCEC9;
+      --text:     #1A1A1A;
+      --muted:    #6E6B66;
+      --accent:   #7B8B73;
+      --accent-2: #DDE2D9;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .topbar {
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 52px;
+    }
+    .topbar-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .topbar-logo span { color: var(--accent); }
+    .topbar a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      transition: color 0.15s;
+    }
+    .topbar a:hover { color: var(--white); }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 4rem;
+    }
+
+    .label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    h1 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2rem, 6vw, 2.9rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+
+    h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    p { margin-bottom: 1rem; font-size: 1.02rem; }
+    p.small { font-size: 0.9rem; color: var(--muted); }
+
+    ul { margin: 0 0 1.2rem 1.1rem; }
+    li { margin-bottom: 0.35rem; }
+
+    .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.4rem;
+      transition: background 0.15s;
+    }
+    .cta:hover { background: #6B7A63; }
+
+    .box {
+      background: var(--gray);
+      border-left: 4px solid var(--accent);
+      padding: 1.4rem 1.5rem;
+      margin: 2.2rem 0;
+    }
+
+    .divider {
+      border: 0;
+      border-top: 1px solid var(--mid);
+      margin: 3rem 0 2.4rem;
+    }
+
+    footer {
+      background: var(--black);
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 1.6rem 1rem;
+    }
+    footer a { color: var(--accent-2); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">Villa <span>Cas Nins</span></div>
+  <a href="../de/">&#8592; Gästeinfos</a>
+</div>
+
+<div class="wrap">
+
+  <div class="label">Vor der Anreise</div>
+  <h1>Gästeanmeldung</h1>
+
+  <p>Schön, dass Ihr bald bei uns seid! Bevor es losgeht, brauchen wir noch eine Kleinigkeit von Euch: Die spanischen Behörden verlangen, dass wir <strong>alle Gäste vor der Anreise offiziell anmelden</strong>.</p>
+
+  <p>Damit Ihr dafür nichts ausdrucken oder einscannen müsst, könnt Ihr die Angaben hier direkt online eintragen — das dauert keine zwei Minuten.</p>
+
+  <div class="box">
+    <p style="margin-bottom:0.6rem"><strong>Bitte für jede mitreisende Person angeben:</strong></p>
+    <ul>
+      <li>Vor- und Nachname</li>
+      <li>Ausweis- oder Passnummer</li>
+      <li>Adresse und Geburtsdatum</li>
+      <li>Telefonnummer oder E-Mail</li>
+    </ul>
+    <p class="small" style="margin-bottom:0">Die Daten werden ausschließlich für die behördliche Anmeldung verwendet und liegen auf unserem eigenen Server.</p>
+  </div>
+
+  <p><a class="cta" href="https://cloud.rauschers.club/apps/forms/s/KPzSrKtq6L6XnxoGbaDxA346">Zum Anmeldeformular</a></p>
+
+  <hr class="divider">
+
+  <div class="label">Before arrival</div>
+  <h2>Guest registration</h2>
+
+  <p>We are looking forward to welcoming you! One small thing before you travel: Spanish law requires us to <strong>register every guest before arrival</strong>.</p>
+
+  <p>So that you don't have to print or scan anything, you can simply enter the details online — it takes less than two minutes.</p>
+
+  <div class="box">
+    <p style="margin-bottom:0.6rem"><strong>Please provide for every person travelling:</strong></p>
+    <ul>
+      <li>First and last name</li>
+      <li>ID or passport number</li>
+      <li>Address and date of birth</li>
+      <li>Phone number or email</li>
+    </ul>
+    <p class="small" style="margin-bottom:0">The data is used solely for the official registration and is stored on our own server.</p>
+  </div>
+
+  <p><a class="cta" href="https://cloud.rauschers.club/apps/forms/s/KPzSrKtq6L6XnxoGbaDxA346">Open registration form</a></p>
+
+</div>
+
+<footer>
+  Villa Cas Nins · Carrer Guillem de Montcada 18, Santa Ponça &nbsp;·&nbsp;
+  <a href="../de/">Gästeinfos</a> / <a href="../en/">Guest info</a>
+</footer>
+
+</body>
+</html>
